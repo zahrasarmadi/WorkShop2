@@ -1,0 +1,54 @@
+﻿@page
+@model WorkShop2.Pages.AddModel
+@{
+}
+
+<form method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="@Model.ModelView.Name"></label>
+            <input asp-for="@Model.ModelView.Name" class="form-control">
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="@Model.ModelView.Title"></label>
+            <input class="form-control" asp-for="@Model.ModelView.Title">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.ModelView.Price"></label>
+        <input type="number" asp-for="@Model.ModelView.Price" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.ModelView.Color"></label>
+        <input type="text" class="form-control" asp-for="@Model.ModelView.Color">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="@Model.ModelView.CategoryId">Category</label>
+            <select asp-for ="@Model.ModelView.CategoryId" class="form-control">
+                @foreach (var item in Model.CategoryModel)
+                {
+                <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="@Model.ModelView.Description"></label>
+            <textarea class="form-control" asp-for="@Model.ModelView.Description" rows="3"></textarea>
+        </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">submit</button>
+</form>
+
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        Success
+    </div>
+}

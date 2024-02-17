@@ -1,0 +1,46 @@
+﻿@page
+@using WorkShop2.Entities
+@model WorkShop2.Pages.AllProductsModel
+@{
+}
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Title</th>
+            <th scope="col">Color</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ProductModel)
+        {
+            <tr>
+                <th>@item.Id</th>
+                <th>@item.Name</th>
+                <th>@item.Title</th>
+                <th>@item.Color</th>
+                <th>@item.Price</th>
+                <th>@item.Description</th>
+                <th>
+                    <a asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                    <a asp-page="Update" asp-page-handler="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a>
+                    </th>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+
+@if (TempData["delete"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        Success
+    </div>
+}
